@@ -15,8 +15,8 @@ public class Solution {
 
     private int countZeros(List<Integer> A, int lower, int upper){
         if(lower > upper) return 0;
-        if(lower == upper) return A.size();
         int mid = (lower + upper)/2;
+        if(lower == upper || mid == 0) if(A.get(0) == 0) return A.size(); else return 0;
         if(A.get(mid) == 0){
             if(A.get(mid + 1) == 1){
                 return mid + 1;
@@ -32,8 +32,30 @@ public class Solution {
         }
     }
 
-    public static void main(String[] args){
-        List<Integer> list = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1));
-        System.out.println(new Solution().countZerosAndOnes(list));
+    static int CZerosAndOnes(int[] a)
+    {
+        int c1=0;
+        for(int i=0;i<a.length-1;i++) {
+            if(a[i]==0)
+                c1++;
+            if(a[i]==1)
+                return c1;
+        }
+        return c1;
     }
+
+    public static void main(String[] args) {
+        int[] zAndO={0,0,0,0,0,0};
+        int returnedValue= CZerosAndOnes(zAndO);
+        System.out.println("Zero's:  " + returnedValue);
+        System.out.println("One's:  " + (zAndO.length-returnedValue));
+//        System.out.println(fib(10));
+    }
+
+
+//    public static void main(String[] args){
+//        List<Integer> list = new ArrayList<>(Arrays.asList(0,0,0,1));
+//        System.out.println(new Solution().countZerosAndOnes(list));
+//        System.out.println("Counter : " + counter);
+//    }
 }
